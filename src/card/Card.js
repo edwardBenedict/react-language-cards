@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "./Card.scss";
 
 export default function CardComponent(props) {
-  const [showOptions, toggleOptions] = useState(false);
+  const [showOption, setShowOption] = useState(false);
 
   return (
     <section
       className="card-container"
-      onClick={() => toggleOptions(!showOptions)}
+      onClick={() => setShowOption(!showOption)}
     >
-      {showOptions ? (
+      {showOption ? (
         <ul className="card-list">
-          {props.category.options.map((option) => {
-            return <li key={option}>{option}</li>;
+          {props.language.infos.map((info) => {
+            return <li key={info}>{info}</li>;
           })}
         </ul>
       ) : (
@@ -20,11 +20,11 @@ export default function CardComponent(props) {
           <section className="top-card">
             <img
               className="card-img"
-              src={props.category.img}
-              alt={props.category.name}
+              src={props.language.img}
+              alt={props.language.name}
             ></img>
           </section>
-          <section className="bottom-card">{props.category.name}</section>
+          <section className="bottom-card">{props.language.name}</section>
         </>
       )}
     </section>
